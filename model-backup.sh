@@ -31,7 +31,7 @@ fi
 # Check if there are any models
 if [ -z "$(ls -A $OLLAMA_MODELS_DIR)" ]; then
     echo -e "${YELLOW}No models found to backup.${NC}"
-    echo -e "${YELLOW}Pull some models first: ollama pull llama2${NC}"
+    echo -e "${YELLOW}Pull some models first: ollama pull llama3.2${NC}"
     exit 0
 fi
 
