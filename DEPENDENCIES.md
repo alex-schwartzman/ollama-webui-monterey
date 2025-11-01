@@ -12,6 +12,9 @@ The following dependencies must be installed by an administrator before running 
 ### 2. Python 3.11 or higher
 ```bash
 brew install python@3.11
+
+# Fix file permissions (Homebrew sometimes sets incorrect permissions)
+chmod -R a+r /usr/local/Cellar/python@3.11/
 ```
 
 ### 3. Ollama
@@ -19,9 +22,22 @@ brew install python@3.11
 brew install ollama
 ```
 
-## Optional Dependencies (For Web Developers)
+## Optional Dependencies
 
-### Node.js
+### For Performance (Recommended)
+
+```bash
+# Install performance tools for better user experience
+brew install pv pigz jq
+```
+
+- **pv** - Progress viewer for archive operations
+- **pigz** - Parallel gzip for faster compression (uses multiple CPU cores)
+- **jq** - JSON processor for accurate manifest parsing
+
+### For Web Developers
+
+**Node.js:**
 ```bash
 brew install node
 ```
@@ -53,6 +69,9 @@ For quick copy-paste, here are all the commands in sequence:
 
 # Install dependencies
 brew install python@3.11 ollama
+
+# Fix Python permissions (Homebrew sometimes sets incorrect permissions)
+chmod -R a+r /usr/local/Cellar/python@3.11/
 
 # Verify installations
 python3 --version

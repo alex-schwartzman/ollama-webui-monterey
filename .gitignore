@@ -1,0 +1,36 @@
+# Python virtual environment
+venv/
+
+# Open WebUI data directory (chats, settings, user data)
+data/
+
+# Configuration file (contains secrets)
+.env
+
+# Log files
+*.log
+
+# Process ID files
+*.pid
+
+# Model backup archives
+model-backups/
+model-archives/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~

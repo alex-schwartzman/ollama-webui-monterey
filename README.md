@@ -72,8 +72,10 @@ brew install python@3.11 ollama
 | `stop.sh` | Stop running services |
 | `cleanup.sh` | Remove Open WebUI (keeps models) |
 | `cleanup-full.sh` | Full cleanup including models |
-| `model-backup.sh` | Backup Ollama models to portable archive |
+| `model-backup.sh` | Backup ALL Ollama models to portable archive |
 | `models-restore.sh` | Restore models from backup archive |
+| `model-archive.sh` | Archive a SINGLE model to external storage |
+| `model-unarchive.sh` | Restore a single model from archive |
 
 ## Deployment to Multiple Machines
 
@@ -99,6 +101,38 @@ To efficiently set up Open WebUI on multiple machines:
    ```
 
 This approach saves bandwidth and time by avoiding redundant model downloads.
+
+## Managing Individual Models (Archive to External Storage)
+
+If you have limited disk space, you can selectively archive bulky models to external storage and restore them only when needed:
+
+### Archive a Model
+```bash
+# List models with sizes
+ollama list
+
+# Archive a specific model (interactive)
+./model-archive.sh
+
+# Or specify model name and destination
+./model-archive.sh llama3.2:13b /Volumes/ExternalDrive/model-archives
+```
+
+This will:
+1. Create an archive of the specific model
+2. Optionally remove it from local storage to free up space
+3. Save the archive to `model-archives/` (or your specified location)
+
+### Restore a Model
+```bash
+# List available archives
+ls -lh model-archives/
+
+# Restore a model
+./model-unarchive.sh model-archives/llama3.2-13b_20250101_120000.tar.gz
+```
+
+**Use case:** Keep frequently-used lightweight models (like llama3.2:3b) locally, and archive larger models (like llama3.2:70b) to external storage. Restore them only when you need their capabilities.
 
 ## System Requirements
 
